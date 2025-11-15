@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Phishing Email Detection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>AI-Driven Phishing Detection</h1>
+                </div>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2>Advanced Email Security with Machine Learning</h2>
+                <p>Protect yourself from phishing attacks with our AI-powered detection system using Support Vector Machine (SVM) technology.</p>
+            </section>
+
+            <!-- Detection Interface -->
+            <section class="detection-interface">
+                <div class="input-section">
+                    <h3>Analyze Your Email</h3>
+                    <div class="input-container">
+                        <textarea 
+                            id="emailInput" 
+                            placeholder="Paste the email content you want to analyze here..."
+                            rows="6"
+                        ></textarea>
+                        <div class="input-actions">
+                            <button id="analyzeBtn" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                                Analyze Email
+                            </button>
+                            <button id="clearBtn" class="btn btn-secondary">
+                                <i class="fas fa-trash"></i>
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="loading-state hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing email content...</p>
+                </div>
+
+                <!-- Results Section -->
+                <div id="resultsSection" class="results-section hidden">
+                    <h3>Analysis Results</h3>
+                    
+                    <!-- Main Result Card -->
+                    <div class="result-card">
+                        <div class="result-header">
+                            <div class="result-icon" id="resultIcon">
+                                <i class="fas fa-shield-check"></i>
+                            </div>
+                            <div class="result-title">
+                                <h4 id="resultTitle">Email Classification</h4>
+                                <p id="resultSubtitle">Analysis complete</p>
+                            </div>
+                            <div class="confidence-badge" id="confidenceBadge">
+                                <span id="confidenceValue">0%</span>
+                                <small>Confidence</small>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress Bars -->
+                        <div class="progress-section">
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span>Safe</span>
+                                    <span id="safePercent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill safe-progress" id="safeProgress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">
+                                    <span>Phishing</span>
+                                    <span id="phishingPercent">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill phishing-progress" id="phishingProgress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Explanation -->
+                    <div class="explanation-card">
+                        <h4><i class="fas fa-info-circle"></i> Analysis Explanation</h4>
+                        <div id="explanationContent">
+                            <!-- Dynamic content will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button id="newAnalysisBtn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            New Analysis
+                        </button>
+                        <button id="copyResultsBtn" class="btn btn-secondary">
+                            <i class="fas fa-copy"></i>
+                            Copy Results
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Error State -->
+                <div id="errorState" class="error-state hidden">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4>Analysis Failed</h4>
+                    <p id="errorMessage">An error occurred while analyzing the email.</p>
+                    <button id="retryBtn" class="btn btn-primary">
+                        <i class="fas fa-redo"></i>
+                        Try Again
+                    </button>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <h3>How Our AI Detection Works</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Machine Learning</h4>
+                        <p>Uses advanced Support Vector Machine (SVM) algorithms trained on thousands of phishing and legitimate emails.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>Content Analysis</h4>
+                        <p>Analyzes email content, language patterns, and suspicious indicators to identify potential threats.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Detailed Explanations</h4>
+                        <p>Provides clear explanations of why an email is classified as phishing or safe, helping you learn and stay protected.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Real-time Protection</h4>
+                        <p>Instant analysis with high accuracy to help you make informed decisions about email safety.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 AI-Driven Phishing Email Detection. Powered by SVM Machine Learning.</p>
+                <p>Developed with ❤️ for email security awareness.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
