@@ -13,10 +13,28 @@ CORS(app)  # Enable CORS for all routes
 # Load the trained model
 def load_model():
     try:
-        with open('svm_phishing_model.pkl', 'rb') as f:
-            detector.pipeline = pickle.load(f)
-        detector.is_trained = True
-        print("Model loaded successfully!")
+        # Try different possible paths for the model file
+        possible_paths = [
+            'svm_phishing_model.pkl',
+            './svm_phishing_model.pkl',
+            '/svm_phishing_model.pkl'
+        ]
+        
+        model_loaded = False
+        for path in possible_paths:
+            try:
+                with open(path, 'rb') as f:
+                    detector.pipeline = pickle.load(f)
+                detector.is_trained = True
+                print(f"Model loaded successfully from: {path}")
+                model_loaded = True
+                break
+            except FileNotFoundError:
+                continue
+                
+        if not model_loaded:
+            raise Exception("Could not find model file in any expected location")
+            
         return True
     except Exception as e:
         print(f"Error loading model: {e}")
@@ -31,7 +49,9 @@ def health_check():
     return jsonify({
         'status': 'healthy',
         'model_loaded': model_loaded,
-        'message': 'Phishing Detection API is running'
+        'message': 'Phishing Detection API is running',
+        'working_dir': os.getcwd(),
+        'files_in_dir': os.listdir('.') if model_loaded else []
     })
 
 @app.route('/api/predict', methods=['POST'])
