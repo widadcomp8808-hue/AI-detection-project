@@ -1,0 +1,21 @@
+{
+  "name": "phishing-detector",
+  "version": "1.0.0",
+  "description": "AI-Driven Phishing Email Detection using SVM",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build": "echo 'Static website - no build needed'"
+  },
+  "keywords": ["phishing", "detection", "security", "machine-learning"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "python-shell": "^5.0.0"
+  }
+}

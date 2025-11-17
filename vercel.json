@@ -1,1 +1,18 @@
-{"version": 2, "builds": [{"src": "api.py", "use": "@vercel/python"}], "routes": [{"src": "/(.*)", "dest": "api.py"}]}
+{
+  "version": 2,
+  "buildCommand": "npm install",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "server.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ]
+}

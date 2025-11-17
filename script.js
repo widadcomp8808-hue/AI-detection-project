@@ -28,7 +28,7 @@ const explanationContent = document.getElementById('explanationContent');
 const errorMessage = document.getElementById('errorMessage');
 
 // API configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = window.location.origin + '/api';
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
